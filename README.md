@@ -77,19 +77,11 @@ lab-cuantico/
 
 ---
 
-## 🧪 Capturas sugeridas
-
-- Página de login con diseño moderno
-- Menú principal
-- Simulador en acción (con selección de algoritmo)
-- Curso teórico con videos embebidos
-
----
 
 ## 📚 Créditos
 
 - Videos embebidos del canal [When Physics](https://www.youtube.com/@WhenPhysics)
-- Proyecto desarrollado por: **[Tu nombre aquí]**
+- Proyecto desarrollado por: **[Daniel Juárez y Alfredo Palacios]**
 
 ---
 
