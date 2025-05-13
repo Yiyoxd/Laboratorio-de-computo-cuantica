@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador Cuántico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #e8f5e9, #c8e6c9);
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .sim-container {
+      max-width: 800px;
+      margin: 5vh auto;
+      background-color: #ffffff;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    .result-box {
+      font-family: 'Fira Code', monospace;
+      background-color: #1b5e20;
+      color: #c8e6c9;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      min-height: 150px;
+      white-space: pre-wrap;
+    }
+
+    .btn-sim {
+      margin-top: 1.5rem;
+    }
+
+    .back-link {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sim-container">
+    <h2>🧪 Simulador Cuántico</h2>
+
+    <form id="sim-form">
+      <div class="mb-3">
+        <label for="algoritmo" class="form-label">Selecciona un algoritmo:</label>
+        <select class="form-select" id="algoritmo" required>
+          <option value="grover">Grover</option>
+          <option value="shor">Shor</option>
+          <option value="fourier">Transformada de Fourier</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="param" class="form-label">Ingresa el parámetro (número objetivo, N, etc.):</label>
+        <input type="number" id="param" class="form-control" placeholder="Ej. 16" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 btn-sim">Ejecutar Simulación</button>
+    </form>
+
+    <div id="resultado" class="result-box d-none"></div>
+
+    <div class="text-center back-link">
+      <a href="/menu" class="btn btn-outline-dark">← Volver al Menú</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("sim-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const algoritmo = document.getElementById("algoritmo").value;
+      const param = document.getElementById("param").value;
+      const resultado = document.getElementById("resultado");
+
+      let texto = "";
+
+      if (algoritmo === "grover") {
+        texto = `🧠 Ejecutando algoritmo de Grover...\n🔎 Buscando el valor objetivo en N = ${param}\n✅ Resultado: Encontrado en √N iteraciones (~${Math.floor(Math.sqrt(param))})`;
+      } else if (algoritmo === "shor") {
+        texto = `🧠 Ejecutando algoritmo de Shor...\n🧮 Factorizando el número ${param}\n✅ Resultado: 2 × ${Math.floor(param / 2)} (simulado)`;
+      } else if (algoritmo === "fourier") {
+        texto = `🧠 Ejecutando Transformada Cuántica de Fourier...\n🔄 Aplicando QFT a una señal de tamaño N = ${param}\n✅ Resultado: Transformación completada`;
+      }
+
+      resultado.classList.remove("d-none");
+      resultado.textContent = texto;
+    });
+  </script>
+
+</body>
+</html>
